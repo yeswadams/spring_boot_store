@@ -1,0 +1,40 @@
+{
+  "name": "masoko",
+  "private": true,
+  "packageManager": "pnpm@12.14.0",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "commit": "cz",
+    "nx": "nx",
+    "build:all": "make build-all",
+    "dev:frontend": "nx serve storefront",
+    "dev:backend": "make dev-backend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.14.0",
+      "onFail": "download"
+    }
+  },
+  "devDependencies": {
+    "nx": "^20.0.0",
+    "@nx/angular": "^20.0.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "typescript": "~5.4.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+
+  }
+}

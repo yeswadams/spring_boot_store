@@ -1,0 +1,11 @@
+{
+  "name": "@app/storefront",
+  "type": "module",
+  "private": true,
+  "scripts": {
+
+  },
+  "devDependencies": {
+
+  }
+}

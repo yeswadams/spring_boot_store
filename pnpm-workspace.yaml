@@ -1,0 +1,9 @@
+packages:
+  - "apps/storefront"
+  - "packages/*"
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: true
+  lmdb: false
+  msgpackr-extract: false
+  nx: false

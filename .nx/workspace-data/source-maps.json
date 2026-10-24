@@ -1,0 +1,40 @@
+{
+  "apps/storefront": {
+    "root": [
+      "apps/storefront/package.json",
+      "nx/core/package-json"
+    ],
+    "name": [
+      "apps/storefront/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "apps/storefront/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "apps/storefront/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "apps/storefront/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "apps/storefront/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "apps/storefront/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "apps/storefront/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "apps/storefront/package.json",
+      "nx/core/package-json"
+    ]
+  }
+}
