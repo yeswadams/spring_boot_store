@@ -1,18 +1,18 @@
 {
   "nodes": {
-    "@app/storefront": {
-      "name": "@app/storefront",
+    "@app/angular": {
+      "name": "@app/angular",
       "type": "lib",
       "data": {
         "root": "apps/storefront",
-        "name": "@app/storefront",
+        "name": "@app/angular",
         "tags": [
           "npm:private"
         ],
         "metadata": {
           "targetGroups": {},
           "js": {
-            "packageName": "@app/storefront",
+            "packageName": "@app/angular",
             "isInPackageManagerWorkspaces": true
           }
         },
@@ -23,7 +23,7 @@
   },
   "externalNodes": {},
   "dependencies": {
-    "@app/storefront": []
+    "@app/angular": []
   },
   "version": "6.0",
   "errors": [
@@ -45,5 +45,5 @@
       "name": "AggregateCreateNodesError"
     }
   ],
-  "computedAt": 1792772699321
+  "computedAt": 1792927361090
 }
