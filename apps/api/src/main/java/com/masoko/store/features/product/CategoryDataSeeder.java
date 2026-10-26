@@ -1,12 +1,9 @@
 package com.masoko.store.features.product;
 
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.List;
-
-import java.util.Arrays;
 
 @Component
 public class CategoryDataSeeder implements CommandLineRunner {
