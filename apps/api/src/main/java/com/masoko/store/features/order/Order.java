@@ -1,5 +1,6 @@
 package com.masoko.store.features.order;
 
+import com.masoko.store.features.user.User;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.Changelog;
@@ -24,7 +25,7 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private Long user;
+    private User user_id;
 
     @CreationTimestamp
     private LocalDateTime created_at;

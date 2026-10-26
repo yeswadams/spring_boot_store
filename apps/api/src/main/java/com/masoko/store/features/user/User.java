@@ -1,9 +1,9 @@
 package com.masoko.store.features.user;
 
+import com.masoko.store.features.cart.Cart;
 import com.masoko.store.features.order.Order;
 import jakarta.persistence.*;
 import jakarta.persistence.CascadeType;
-import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.annotations.*;
 
@@ -31,6 +31,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders = new ArrayList<>();
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Cart cart;
 
     @CreationTimestamp()
     @Column(name = "created_at", nullable = false, updatable = false)
