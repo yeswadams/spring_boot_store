@@ -1,11 +1,15 @@
 package com.masoko.store.features.user;
 
+import com.masoko.store.features.order.Order;
 import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.validation.constraints.*;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -24,6 +28,9 @@ public class User {
 
     @ColumnDefault("'user'")
     private String role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders = new ArrayList<>();
 
     @CreationTimestamp()
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -8,6 +8,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -22,7 +24,7 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private Long userId;
+    private Long user;
 
     @CreationTimestamp
     private LocalDateTime created_at;
