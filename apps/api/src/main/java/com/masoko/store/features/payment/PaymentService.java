@@ -4,11 +4,8 @@ import com.masoko.store.features.order.Order;
 import com.masoko.store.features.order.OrderRepository;
 import com.masoko.store.features.payment.dto.PaymentRequest;
 import com.masoko.store.exception.ResourceNotFound;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
 
 @Service
 public class PaymentService {
@@ -50,9 +47,10 @@ public class PaymentService {
     }
 
     @Transactional
-    public void processMpesaCallback(String checkouRequestId, String receiptNumber, boolean isSuccess) {
-        Payment payment = paymentRepository.findByCheckoutRequestId(checkouRequestId)
-                .orElseThrow(() -> new ResourceNotFoundException("No transaction records match checkout id: " + checkouRequestId));
+    public void processMpesaCallback(String checkoutRequestId, String receiptNumber, boolean isSuccess) {
+//        Query db for the matching pending payment instance
+        Payment payment = paymentRepository.findByCheckoutRequestId(checkoutRequestId)
+                .orElseThrow(() -> new ResourceNotFoundException("No transaction records match checkout id: " + checkoutRequestId));
 
         if(isSuccess) {
             payment.setPaymentStatus(PaymentStatus.SUCCESS);
