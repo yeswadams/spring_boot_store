@@ -1,3 +1,4 @@
+// File: apps/api/src/main/java/com/masoko/store/features/payment/MpesaCallbackController.java
 package com.masoko.store.features.payment;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -17,32 +18,38 @@ public class MpesaCallbackController {
         this.objectMapper = objectMapper;
     }
 
-//   Consumes incoming plain JSON streams from Safaricom, parsing nested structures using Jackson.
+    /**
+     * Consumes incoming plain JSON streams from Safaricom, parsing nested structures using Jackson.
+     */
     @PostMapping
     public ResponseEntity<String> receiveMpesaCallback(@RequestBody String jsonPayload) {
         try {
+            // Traverse Safaricom's nested JSON schema framework via Jackson JsonNode paths
             JsonNode root = objectMapper.readTree(jsonPayload);
             JsonNode stkCallback = root.path("Body").path("stkCallback");
 
             String checkoutRequestId = stkCallback.path("CheckoutRequestID").asText();
             int resultCode = stkCallback.path("ResultCode").asInt();
 
-            if(resultCode == 0) {
-                JsonNode metaItems = stkCallback.path("CallbackMetaData").path("Item");
+            if (resultCode == 0) {
+                // ResultCode 0 means transaction success. Pull receipt item out of metadata array
+                JsonNode metaItems = stkCallback.path("CallbackMetadata").path("Item");
                 String receiptNumber = "";
-                for(JsonNode item : metaItems) {
-                    if("MpesaReceiptNumber".equals(item.path("Name").asText())) {
-                        receiptNumber = item.path("value").asText();
+                for (JsonNode item : metaItems) {
+                    if ("MpesaReceiptNumber".equals(item.path("Name").asText())) {
+                        receiptNumber = item.path("Value").asText();
                     }
                 }
                 paymentService.processMpesaCallback(checkoutRequestId, receiptNumber, true);
             } else {
+                // User cancelled or lacked sufficient funds balance
                 paymentService.processMpesaCallback(checkoutRequestId, null, false);
             }
 
-        } catch(Exception e) {
+            // Standard acknowledgment pattern response structure expected by Daraja
+            return ResponseEntity.ok("{\"ResultCode\":0,\"ResultDesc\":\"Success\"}");
+        } catch (Exception e) {
             return ResponseEntity.status(500).body("Error processing callback format");
         }
     }
-
 }

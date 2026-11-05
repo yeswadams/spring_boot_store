@@ -20,8 +20,9 @@ public class Order {
     @Column(name = "total_amount", nullable = false)
     private BigDecimal total_amount;
 
-    @Column(nullable = false)
+    @Column(name="status", nullable = false)
     private String status;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -29,4 +30,7 @@ public class Order {
 
     @CreationTimestamp
     private LocalDateTime created_at;
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) {this.status = status; }
 }

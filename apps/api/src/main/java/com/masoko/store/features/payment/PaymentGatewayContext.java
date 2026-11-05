@@ -1,7 +1,7 @@
 package com.masoko.store.features.payment;
 
 import com.masoko.store.features.order.Order;
-import com.masoko.store.features.payment.dto.PaymentRequest;
+import com.masoko.store.features.payment.dto.PaymentRequestDto;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class PaymentGatewayContext {
     }
 
 //    Resolve the correct payment rail dynamically and initiate transaction logic
-    public PaymentResponse processOrderPayment(Order order, PaymentRequest request) {
+    public PaymentResponse processOrderPayment(Order order, PaymentRequestDto request) {
         return processors.stream()
                 .filter(processor -> processors.supports(request.getClass().getSimpleName()))
                 .findFirst()

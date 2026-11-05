@@ -3,7 +3,7 @@ package com.masoko.store.features.payment;
 import com.masoko.store.features.order.Order;
 import com.masoko.store.features.order.OrderRepository;
 import com.masoko.store.features.payment.dto.PaymentRequest;
-import com.masoko.store.exception.ResourceNotFound;
+import com.masoko.store.common.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

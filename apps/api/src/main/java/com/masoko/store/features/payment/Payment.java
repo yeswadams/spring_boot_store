@@ -72,4 +72,7 @@ public class Payment {
     public void setPaymentStatus(PaymentStatus status) { this.paymentStatus = status; }
     public String getTransactionHash() { return transactionHash; }
     public void setTransactionHash(String hash) { this.transactionHash = hash; }
+    public void setMpesaCheckoutRequestId(String id) { this.mpesaCheckoutRequestId = id; }
+    public void setMpesaReceiptNumber(String receiptNumber) { this.mpesaReceiptNumber = receiptNumber; }
+
 }
