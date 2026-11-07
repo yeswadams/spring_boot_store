@@ -1,9 +1,13 @@
-package com.masoko.store.features.payment;
+package com.masoko.store.features.payment.service;
 
 import com.masoko.store.features.order.Order;
 import com.masoko.store.features.order.OrderRepository;
-import com.masoko.store.features.payment.dto.PaymentRequest;
+import com.masoko.store.features.payment.PaymentGatewayContext;
+import com.masoko.store.features.payment.dto.PaymentRequestDto;
 import com.masoko.store.common.exception.ResourceNotFoundException;
+import com.masoko.store.features.payment.entity.Payment;
+import com.masoko.store.features.payment.entity.PaymentStatus;
+import com.masoko.store.features.payment.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,7 +27,7 @@ public class PaymentService {
     }
 
     @Transactional
-    public PaymentResponse processCheckout(PaymentRequest request) {
+    public PaymentResponse processCheckout(PaymentRequestDto request) {
 //      fetch order using hibernate lifecycle
         Order order = orderRepository.findById(request.getOrderId())
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with ID: " + request.getOrderId()));

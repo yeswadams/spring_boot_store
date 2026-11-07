@@ -1,6 +1,6 @@
 package com.masoko.store.features.payment.dto;
 
-import com.masoko.store.features.payment.PaymentStatus;
+import com.masoko.store.features.payment.entity.PaymentStatus;
 
 public class PaymentResponseDto {
 

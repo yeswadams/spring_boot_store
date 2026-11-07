@@ -1,5 +1,5 @@
 // File: apps/api/src/main/java/com/masoko/store/features/payment/Payment.java
-package com.masoko.store.features.payment;
+package com.masoko.store.features.payment.entity;
 
 import com.masoko.store.features.order.Order;
 import jakarta.persistence.*;
@@ -21,8 +21,9 @@ public class Payment {
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal amount;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "payment_method", nullable = false, length = 50)
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_status", nullable = false, length = 50)
@@ -75,4 +76,19 @@ public class Payment {
     public void setMpesaCheckoutRequestId(String id) { this.mpesaCheckoutRequestId = id; }
     public void setMpesaReceiptNumber(String receiptNumber) { this.mpesaReceiptNumber = receiptNumber; }
 
+    public String getMpesaCheckoutRequestId() {
+        return mpesaCheckoutRequestId;
+    }
+
+    public String getMpesaReceiptNumber() {
+        return mpesaReceiptNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getSenderWallet() {
+        return senderWallet;
+    }
 }

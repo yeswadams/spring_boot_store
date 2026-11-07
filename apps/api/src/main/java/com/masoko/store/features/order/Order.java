@@ -18,7 +18,7 @@ public class Order {
     private Long id;
 
     @Column(name = "total_amount", nullable = false)
-    private BigDecimal total_amount;
+    private BigDecimal totalAmount;
 
     @Column(name="status", nullable = false)
     private String status;
@@ -26,10 +26,11 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user_id;
+    private User user;
 
     @CreationTimestamp
-    private LocalDateTime created_at;
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
     public String getStatus() { return status; }
     public void setStatus(String status) {this.status = status; }

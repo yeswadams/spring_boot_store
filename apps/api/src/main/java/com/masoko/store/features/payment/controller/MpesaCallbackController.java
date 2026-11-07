@@ -1,8 +1,9 @@
 // File: apps/api/src/main/java/com/masoko/store/features/payment/MpesaCallbackController.java
-package com.masoko.store.features.payment;
+package com.masoko.store.features.payment.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.masoko.store.features.payment.service.PaymentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
