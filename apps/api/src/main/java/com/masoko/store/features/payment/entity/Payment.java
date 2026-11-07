@@ -7,7 +7,15 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "payments")
+@Table(
+        name = "payments",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_payment_mpesa_checkout_request_id",
+                        columnNames = "mpesa_checkout_request_id"
+                )
+        }
+)
 public class Payment {
 
     @Id
