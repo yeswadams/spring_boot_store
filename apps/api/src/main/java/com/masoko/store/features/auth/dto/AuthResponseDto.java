@@ -1,7 +1,7 @@
 package com.masoko.store.features.auth.dto;
 
 import com.masoko.store.features.user.dto.UserResponseDto;
-import com.masoko.store.features.user.entity.User;
+
 
 public class AuthResponseDto {
 
