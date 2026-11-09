@@ -1,3 +1,6 @@
 spring:
   application:
     name: store
+app:
+  jwt:
+    secret: ${JWT_SECRET}
