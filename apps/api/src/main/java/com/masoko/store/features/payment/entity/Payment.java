@@ -1,7 +1,7 @@
 // File: apps/api/src/main/java/com/masoko/store/features/payment/Payment.java
 package com.masoko.store.features.payment.entity;
 
-import com.masoko.store.features.order.Order;
+import com.masoko.store.features.order.entity.Order;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -47,9 +47,6 @@ public class Payment {
     @Column(name = "phone_number", length = 20)
     private String phoneNumber;
 
-    @Column(name = "stripe_payment_intent_id", length = 100)
-    private String stripePaymentIntentId;
-
     @Column(name = "transaction_hash", length = 66)
     private String transactionHash;
 
@@ -75,10 +72,33 @@ public class Payment {
     public void setOrder(Order order) { this.order = order; }
     public BigDecimal getAmount() { return amount; }
     public void setAmount(BigDecimal amount) { this.amount = amount; }
-    public String getPaymentMethod() { return paymentMethod; }
-    public void setPaymentMethod(String method) { this.paymentMethod = method; }
-    public PaymentStatus getPaymentStatus() { return paymentStatus; }
-    public void setPaymentStatus(PaymentStatus status) { this.paymentStatus = status; }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public PaymentStatus getPaymentStatus() {
+        return paymentStatus;
+    }
+    public void setPaymentStatus(PaymentStatus status) {
+        this.paymentStatus = status;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+//    public Payment getPayment(Payment paymentId) {
+//        return paymentId;
+//    }
+
+    public void setSenderWallet(String senderWallet) {
+        this.senderWallet = senderWallet;
+    }
+
     public String getTransactionHash() { return transactionHash; }
     public void setTransactionHash(String hash) { this.transactionHash = hash; }
     public void setMpesaCheckoutRequestId(String id) { this.mpesaCheckoutRequestId = id; }

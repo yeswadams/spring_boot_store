@@ -1,4 +1,4 @@
-package com.masoko.store.features.order;
+package com.masoko.store.features.order.entity;
 
 import com.masoko.store.features.product.Product;
 import jakarta.persistence.*;

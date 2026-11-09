@@ -1,10 +1,11 @@
 package com.masoko.store.features.payment.service;
 
-import com.masoko.store.features.order.Order;
-import com.masoko.store.features.order.OrderRepository;
+import com.masoko.store.features.order.entity.Order;
+import com.masoko.store.features.order.repository.OrderRepository;
 import com.masoko.store.features.payment.PaymentGatewayContext;
 import com.masoko.store.features.payment.dto.PaymentRequestDto;
 import com.masoko.store.common.exception.ResourceNotFoundException;
+import com.masoko.store.features.payment.dto.PaymentResponseDto;
 import com.masoko.store.features.payment.entity.Payment;
 import com.masoko.store.features.payment.entity.PaymentStatus;
 import com.masoko.store.features.payment.repository.PaymentRepository;
@@ -27,7 +28,7 @@ public class PaymentService {
     }
 
     @Transactional
-    public PaymentResponse processCheckout(PaymentRequestDto request) {
+    public PaymentResponseDto processCheckout(PaymentRequestDto request) {
 //      fetch order using hibernate lifecycle
         Order order = orderRepository.findById(request.getOrderId())
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with ID: " + request.getOrderId()));
@@ -39,7 +40,7 @@ public class PaymentService {
         payment.setPaymentStatus(PaymentStatus.PENDING);
 
 //        delegation to the gateway router
-        PaymentResponse response = paymentGatewayContext.processOrderPayment(order, request);
+        PaymentResponseDto response = paymentGatewayContext.processOrderPayment(order, request);
 
 //        Enrich the entity with processing properties before flushing to the db
         payment.setPaymentStatus((response.getStatus()));

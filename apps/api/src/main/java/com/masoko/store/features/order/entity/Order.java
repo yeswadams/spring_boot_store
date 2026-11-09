@@ -1,9 +1,8 @@
-package com.masoko.store.features.order;
+package com.masoko.store.features.order.entity;
 
 import com.masoko.store.features.user.User;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
-import org.hibernate.annotations.Changelog;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
