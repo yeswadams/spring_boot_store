@@ -1,6 +1,6 @@
 package com.masoko.store.features.order.entity;
 
-import com.masoko.store.features.user.User;
+import com.masoko.store.features.user.entity.User;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;

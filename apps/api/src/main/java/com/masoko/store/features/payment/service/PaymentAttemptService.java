@@ -9,7 +9,6 @@ import com.masoko.store.features.payment.entity.PaymentStatus;
 import com.masoko.store.features.payment.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.ResourceAccessException;
 
 @Service
 public class PaymentAttemptService {
@@ -69,8 +68,8 @@ public class PaymentAttemptService {
     ) {
         Payment payment = paymentRepository
                 .findByMpesaCheckoutRequestId(checkoutRequestId)
-                .orElseThrow(() -> new ResourceAccessException(
-                        "No transaction records match checkout id: " + checkoutRequestId
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "No payment records matches checkout ID: " + checkoutRequestId
                 ));
 
         if(payment.getPaymentStatus() != PaymentStatus.PENDING) {

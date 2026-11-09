@@ -1,4 +1,4 @@
-package com.masoko.store.features.user;
+package com.masoko.store.features.user.entity;
 
 import com.masoko.store.features.cart.Cart;
 import com.masoko.store.features.order.entity.Order;
@@ -25,6 +25,9 @@ public class User {
 
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
+
+    @Column(name = "full_name", nullable = false)
+    private String fullName;
 
     @ColumnDefault("'user'")
     private String role;
