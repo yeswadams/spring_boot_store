@@ -47,7 +47,7 @@ public class Product {
 //    Getter and setter methods
     public void addReview(ProductReview review) {
         reviews.add(review);
-        review.setProduct(null);
+        review.setProduct(this);
     }
 
     public void removeReview(ProductReview review) {

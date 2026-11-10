@@ -5,6 +5,22 @@ apps/api/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Environment variables:
+.env
+
+### Nodemodules
+node_modules
+
+# Nx Caches & Workspace Data
+.nx/
+node_modules/.cache/nx/
+
+# General Node & Dependencies
+/node_modules
+/.yarn/*
+!/.yarn/patches
+
+
 ### STS ###
 .apt_generated
 .classpath
@@ -32,3 +48,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+

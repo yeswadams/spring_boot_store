@@ -1,7 +1,7 @@
 package com.masoko.store.features.cart;
 
 import com.masoko.store.features.product.Product;
-import com.masoko.store.features.user.User;
+import com.masoko.store.features.user.entity.User;
 import jakarta.persistence.*;
 
 @Entity

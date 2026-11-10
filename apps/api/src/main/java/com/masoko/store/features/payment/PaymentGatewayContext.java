@@ -1,8 +1,11 @@
 package com.masoko.store.features.payment;
 
-import com.masoko.store.features.order.Order;
-import com.masoko.store.features.payment.dto.PaymentRequestDto;
+import com.masoko.store.features.payment.entity.Payment;
+import com.masoko.store.features.payment.entity.PaymentMethod;
+import com.masoko.store.features.payment.processor.PaymentProcessor;
+import com.masoko.store.features.payment.dto.PaymentResponseDto;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -16,13 +19,17 @@ public class PaymentGatewayContext {
     }
 
 //    Resolve the correct payment rail dynamically and initiate transaction logic
-    public PaymentResponse processOrderPayment(Order order, PaymentRequestDto request) {
+    public PaymentResponseDto processPayment(Payment payment) {
+        PaymentMethod paymentMethod = payment.getPaymentMethod();
+
         return processors.stream()
-                .filter(processor -> processors.supports(request.getClass().getSimpleName()))
+                .filter(processor ->
+                        processor.getPaymentMethod() == paymentMethod
+                )
                 .findFirst()
-                .map(processor -> processor.processPayment(order, request))
                 .orElseThrow(() -> new IllegalArgumentException(
-                        "No matching payment channel found for the request token: " + request.getClass().getSimpleName()
-                ));
+                        "Unsupported payment method: " + paymentMethod
+                ))
+                .initiate(payment);
     }
 }

@@ -1,9 +1,11 @@
 package com.masoko.store.features.payment.dto;
 
+import com.masoko.store.features.payment.entity.PaymentMethod;
+
 public class PaymentRequestDto {
 
     private Long orderId;
-    private String paymentMethod;
+    private PaymentMethod paymentMethod;
     private String phoneNumber;
 
     public PaymentRequestDto() {}
@@ -16,11 +18,11 @@ public class PaymentRequestDto {
         this.orderId = orderId;
     }
 
-    public String getPaymentMethod() {
+    public PaymentMethod getPaymentMethod() {
         return paymentMethod;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
