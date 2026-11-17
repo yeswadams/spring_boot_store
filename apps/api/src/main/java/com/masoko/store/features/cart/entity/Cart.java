@@ -1,4 +1,4 @@
-package com.masoko.store.features.cart;
+package com.masoko.store.features.cart.entity;
 
 import com.masoko.store.features.product.Product;
 import com.masoko.store.features.user.entity.User;
@@ -14,7 +14,7 @@ public class Cart {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", unique = true, nullable = false)
-    private User userId;
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
