@@ -1,6 +1,6 @@
 package com.masoko.store.features.user.entity;
 
-import com.masoko.store.features.cart.Cart;
+import com.masoko.store.features.cart.entity.Cart;
 import com.masoko.store.features.order.entity.Order;
 import jakarta.persistence.*;
 import jakarta.persistence.CascadeType;
