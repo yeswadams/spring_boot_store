@@ -50,3 +50,8 @@ build/
 .vscode/
 
 
+### Environment Varibales
+.env
+.env.local
+
+
